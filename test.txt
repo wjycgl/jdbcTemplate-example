@@ -1,0 +1,20 @@
+<Connector port="80" maxHttpHeaderSize="8192" protocol="HTTP/1.1"
+   connectionTimeout="20000" redirectPort="443"/>
+
+<Connector port="443" connectionTimeout="20000" protocol="org.apache.coyote.http11.Http11NioProtocol" 
+   maxThreads="150" SSLEnabled="true" scheme="https" secure="true">
+	<SSLHostConfig>
+		<Certificate certificateKeystoreFile="conf/voa.tpyyes.com.jks" certificateKeystorePassword="wjycg123"
+					 type="RSA" />
+	</SSLHostConfig>
+</Connector>
+
+<security-constraint>
+  <web-resource-collection >
+	<web-resource-name >SSL</web-resource-name>
+	<url-pattern>/*</url-pattern>
+  </web-resource-collection>
+  <user-data-constraint>
+	<transport-guarantee>CONFIDENTIAL</transport-guarantee>
+  </user-data-constraint>
+</security-constraint>
